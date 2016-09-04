@@ -62,11 +62,12 @@ func main() {
 	sort.Sort(ByLoad(cities))
 
 	for i = 0; i < (num_of_clinics - num_of_cities); i++ {
-		cities[num_of_cities - 1].num_of_clinics++
-		cities[num_of_cities - 1].load = cities[num_of_cities - 1].population / cities[num_of_cities - 1].num_of_clinics
+		c := &cities[num_of_cities - 1]
+		c.num_of_clinics++
+		c.load = c.population / c.num_of_clinics
 
-		if bar := cities[num_of_cities - 1].population % cities[num_of_cities - 1].num_of_clinics; bar != 0{
-			cities[num_of_cities - 1].load++
+		if bar := c.population % c.num_of_clinics; bar != 0{
+			c.load++
 		}
 		// sort cities
 		sort.Sort(ByLoad(cities))
